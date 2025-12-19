@@ -12,7 +12,8 @@ const html = htm.bind(React.createElement);
 
 const App = () => {
   // App State
-  const [view, setView] = useState('home'); // 'home' | 'simulation' | 'lecture'
+  // 初期表示を 'lecture' に変更し、解説からスタートさせる
+  const [view, setView] = useState('lecture'); // 'home' | 'simulation' | 'lecture'
   const [mode, setMode] = useState('free'); // 'free' | 'quiz'
   
   // Simulation State
@@ -63,6 +64,13 @@ const App = () => {
 
   const startLectureMode = () => {
       setView('lecture');
+  };
+
+  // レクチャー完了時の処理
+  const handleLectureComplete = () => {
+      // 基礎マスターコース（index 0）を開始する
+      const basicCourse = MISSION_SETS.find(m => m.id === 'basic_course') || MISSION_SETS[0];
+      startMissionMode(basicCourse);
   };
 
   const goToHome = () => {
@@ -343,7 +351,7 @@ const App = () => {
   // --- Views ---
 
   if (view === 'lecture') {
-      return html`<${LectureMode} onExit=${goToHome} />`;
+      return html`<${LectureMode} onExit=${goToHome} onComplete=${handleLectureComplete} />`;
   }
 
   if (view === 'home') {
@@ -370,6 +378,25 @@ const App = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
+                ${/* Lecture Mode Card */ ''}
+                 <div 
+                  onClick=${startLectureMode}
+                  className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-300 cursor-pointer transition-all group relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <${BookOpen} size=${64} className="text-emerald-600" />
+                  </div>
+                  <div className="flex items-center justify-between relative z-10">
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">解説・知識学習</h3>
+                      <p className="text-slate-500 mt-1">ネットワークの基本用語や仕組みをスライドで学びます。</p>
+                    </div>
+                    <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                      <${BookOpen} size=${24} />
+                    </div>
+                  </div>
+                </div>
+
                 ${/* Free Mode Card */ ''}
                 <div 
                   onClick=${startFreeMode}
@@ -389,24 +416,6 @@ const App = () => {
                   </div>
                 </div>
 
-                ${/* Lecture Mode Card (New) */ ''}
-                 <div 
-                  onClick=${startLectureMode}
-                  className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-300 cursor-pointer transition-all group relative overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                      <${BookOpen} size=${64} className="text-emerald-600" />
-                  </div>
-                  <div className="flex items-center justify-between relative z-10">
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">解説・知識学習</h3>
-                      <p className="text-slate-500 mt-1">ネットワークの基本用語や仕組みをスライドで学びます。</p>
-                    </div>
-                    <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all">
-                      <${BookOpen} size=${24} />
-                    </div>
-                  </div>
-                </div>
             </div>
           </div>
 

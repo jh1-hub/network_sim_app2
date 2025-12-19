@@ -41,7 +41,13 @@ export const LECTURE_SLIDES = [
                     </p>
                 </div>
             </div>
-        `
+        `,
+        quiz: {
+            question: "学校や会社など、限られた範囲のネットワークを何と呼びますか？",
+            options: ["WAN", "LAN", "ISP"],
+            answerIndex: 1,
+            explanation: "正解！LAN (Local Area Network) は、学校や会社内のネットワークを指します。WANはもっと広い範囲、ISPは接続業者です。"
+        }
     },
     {
         id: 2,
@@ -85,7 +91,13 @@ export const LECTURE_SLIDES = [
                     </div>
                 </div>
             </div>
-        `
+        `,
+        quiz: {
+            question: "異なるネットワークを接続し、データの最適な経路を決める機器はどれ？",
+            options: ["ONU", "スイッチ", "ルーター"],
+            answerIndex: 2,
+            explanation: "正解！ルーターはネットワーク間の「道案内」役です。ONUは信号変換、スイッチはLAN内の接続に使われます。"
+        }
     },
     {
         id: 3,
@@ -120,7 +132,13 @@ export const LECTURE_SLIDES = [
                     </div>
                 </div>
             </div>
-        `
+        `,
+        quiz: {
+            question: "データを小さく分割して送信し、回線の利用効率を高めた現在の通信方式は？",
+            options: ["回線交換方式", "パケット交換方式", "伝言ゲーム方式"],
+            answerIndex: 1,
+            explanation: "その通り！「パケット交換方式」のおかげで、私たちはインターネットを常時接続で利用できています。"
+        }
     },
     {
         id: 4,
@@ -153,7 +171,13 @@ export const LECTURE_SLIDES = [
                     </p>
                 </div>
             </div>
-        `
+        `,
+        quiz: {
+            question: "インターネット上の「住所」の役割を持つ番号はどれですか？",
+            options: ["郵便番号", "電話番号", "IPアドレス"],
+            answerIndex: 2,
+            explanation: "正解です。IPアドレス（例：192.168.1.1）を使って、データは正しい相手に届けられます。"
+        }
     },
     {
         id: 5,
@@ -180,7 +204,13 @@ export const LECTURE_SLIDES = [
                     </p>
                 </div>
             </div>
-        `
+        `,
+        quiz: {
+            question: "通信を成立させるための「約束事」や「規約」を何と呼びますか？",
+            options: ["プロトコル", "アルゴリズム", "プログラム"],
+            answerIndex: 0,
+            explanation: "正解！プロトコル（Protocol）は、通信するための共通のルールのことです。"
+        }
     },
     {
         id: 6,
@@ -220,6 +250,12 @@ export const LECTURE_SLIDES = [
                     </p>
                 </div>
             </div>
-        `
+        `,
+        quiz: {
+            question: "データの漏れや間違いがないか確認し、正確性を保証するプロトコルは？",
+            options: ["IP", "TCP", "HTTP"],
+            answerIndex: 1,
+            explanation: "正解です！TCP (Transmission Control Protocol) はデータの信頼性を担い、IPは宛先に届けることを担います。"
+        }
     }
 ];
